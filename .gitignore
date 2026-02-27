@@ -1,0 +1,9 @@
+node_modules/
+.scaffold/
+builds/
+build/
+*.xpi
+.DS_Store
+.env
+*.log
+.vscode/

@@ -1,0 +1,37 @@
+{
+  "name": "zotero-ai-tagger",
+  "version": "0.1.0",
+  "description": "AI-powered tag suggestions for Zotero using OpenAI-compatible APIs",
+  "config": {
+    "addonName": "AI Tagger",
+    "addonID": "zotero-ai-tagger@github.com",
+    "addonRef": "ai-tagger",
+    "prefsPrefix": "extensions.zotero.ai-tagger"
+  },
+  "scripts": {
+    "start": "zotero-plugin-scaffold serve",
+    "build": "zotero-plugin-scaffold build",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "prettier": "prettier --write src/**/*.ts addon/**/*.xhtml"
+  },
+  "dependencies": {
+    "zotero-plugin-toolkit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.4.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "zotero-plugin-scaffold": "^0.8.3",
+    "zotero-types": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lostwildland/zotero-AI-tagger.git"
+  },
+  "author": "Joshua McDonald",
+  "license": "AGPL-3.0-or-later"
+}

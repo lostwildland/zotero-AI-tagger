@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE window>
+<vbox id="zotero-prefpane-ai-tagger" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      xmlns:html="http://www.w3.org/1999/xhtml">
+
+  <html:link rel="localization" href="ai-tagger-preferences.ftl" />
+
+  <!-- API Configuration -->
+  <groupbox>
+    <label><html:h2 data-l10n-id="pref-api-title" /></label>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-api-provider" style="width: 160px;" />
+      <menulist id="pref-provider" preference="extensions.zotero.ai-tagger.provider"
+                oncommand="Zotero.AiTagger.prefs.onProviderChange(this.value)">
+        <menupopup>
+          <menuitem value="openai" data-l10n-id="pref-api-provider-openai" />
+          <menuitem value="custom" data-l10n-id="pref-api-provider-custom" />
+        </menupopup>
+      </menulist>
+    </hbox>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-api-baseurl" style="width: 160px;" />
+      <html:input id="pref-baseurl" type="text" style="flex: 1;"
+                  preference="extensions.zotero.ai-tagger.baseURL" />
+    </hbox>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-api-key" style="width: 160px;" />
+      <html:input id="pref-apikey" type="password" style="flex: 1;"
+                  preference="extensions.zotero.ai-tagger.apiKey" />
+    </hbox>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-api-model" style="width: 160px;" />
+      <html:input id="pref-model" type="text" style="flex: 1;"
+                  preference="extensions.zotero.ai-tagger.model" />
+    </hbox>
+
+    <hbox align="center">
+      <button id="pref-test-connection" data-l10n-id="pref-api-test"
+              oncommand="Zotero.AiTagger.prefs.testConnection()" />
+      <label id="pref-test-result" value="" style="margin-left: 10px;" />
+    </hbox>
+  </groupbox>
+
+  <!-- Tagging Behavior -->
+  <groupbox>
+    <label><html:h2 data-l10n-id="pref-tagging-title" /></label>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-tagging-source" style="width: 160px;" />
+      <menulist id="pref-tag-source" preference="extensions.zotero.ai-tagger.tagSource">
+        <menupopup>
+          <menuitem value="existing" data-l10n-id="pref-tagging-source-existing" />
+          <menuitem value="new" data-l10n-id="pref-tagging-source-new" />
+        </menupopup>
+      </menulist>
+    </hbox>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-tagging-max" style="width: 160px;" />
+      <html:input id="pref-max-tags" type="number" min="1" max="50" style="width: 80px;"
+                  preference="extensions.zotero.ai-tagger.maxTags" />
+    </hbox>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-tagging-temperature" style="width: 160px;" />
+      <html:input id="pref-temperature" type="text" style="width: 80px;"
+                  preference="extensions.zotero.ai-tagger.temperature" />
+    </hbox>
+
+    <hbox align="center">
+      <checkbox id="pref-fulltext" data-l10n-id="pref-tagging-fulltext"
+                preference="extensions.zotero.ai-tagger.includeFullText" />
+    </hbox>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-tagging-fulltext-maxlen" style="width: 160px;" />
+      <html:input id="pref-fulltext-maxlen" type="number" min="1000" max="100000" style="width: 100px;"
+                  preference="extensions.zotero.ai-tagger.maxFullTextLength" />
+    </hbox>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-tagging-prefix-filter" style="width: 160px;" />
+      <html:input id="pref-prefix-filter" type="text" style="width: 80px;"
+                  preference="extensions.zotero.ai-tagger.tagPrefixFilter" />
+    </hbox>
+
+    <vbox>
+      <label data-l10n-id="pref-tagging-system-prompt" />
+      <html:textarea id="pref-system-prompt" rows="4" style="width: 100%;"
+                     data-l10n-attrs="placeholder"
+                     data-l10n-id="pref-tagging-system-prompt-placeholder"
+                     preference="extensions.zotero.ai-tagger.systemPrompt" />
+    </vbox>
+
+    <hbox align="center">
+      <checkbox id="pref-confirmation" data-l10n-id="pref-tagging-confirmation"
+                preference="extensions.zotero.ai-tagger.confirmationMode" />
+    </hbox>
+  </groupbox>
+
+  <!-- Performance -->
+  <groupbox>
+    <label><html:h2 data-l10n-id="pref-performance-title" /></label>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-performance-concurrency" style="width: 160px;" />
+      <html:input id="pref-concurrency" type="number" min="1" max="20" style="width: 80px;"
+                  preference="extensions.zotero.ai-tagger.concurrency" />
+    </hbox>
+
+    <hbox align="center">
+      <label data-l10n-id="pref-performance-interval" style="width: 160px;" />
+      <html:input id="pref-interval" type="number" min="0" max="60000" style="width: 100px;"
+                  preference="extensions.zotero.ai-tagger.requestInterval" />
+    </hbox>
+  </groupbox>
+</vbox>
